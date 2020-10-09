@@ -1,6 +1,8 @@
-import json, xmltodict
+import json
+import xmltodict
+import os
 
-document = "Trysil_2019_mod.xml"
+document = os.path.join("scans", "Trysil_2019_mod.xml")
 x = open(document, "r")
 x = xmltodict.parse(x.read())
 #json.dump(x, open("out.json", "w"))
