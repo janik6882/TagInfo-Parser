@@ -9,14 +9,11 @@ x = xmltodict.parse(x.read())
 data = x["scan"]["section"][3]["subsection"]
 data = data[3:]
 data = data[0]["block"][:-1]  # [1]["data"]["#text"]
-for i in data:
-    try:
-        pass
-        #print i["data"]["#text"]
-    except KeyError:
-        print i
+
 t = [i["data"]["#text"] for i in data]
 print t
+res = str()
 x = [bytearray.fromhex(t[i]) for i in range(len(t))]
 for i in x:
-    print str(i)
+    res += str(i)
+print res
