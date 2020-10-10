@@ -1,9 +1,8 @@
 import json
 import xmltodict
 import os
-def get_data(filename):
-    document = os.path.join("scans", filename)
-    x = open(document, "r")
+def get_data(path):
+    x = open(path, "r")
     x = xmltodict.parse(x.read())
     data = x["scan"]["section"][3]["subsection"]
     data = data[3:]
@@ -16,9 +15,12 @@ def get_data(filename):
     return res
 
 def main():
-    x2012 = get_data("SFL_2012.xml")
-    x2017 =  get_data("SFL_2017.xml")
-    x2018 = get_data("SFL_2018_adv_night.xml")
+    p1 = os.path.join("scans", "SFL_2012.xml")
+    p2 = os.path.join("scans", "SFL_2017.xml")
+    p3 = os.path.join("scans", "SFL_2018_adv_night.xml")
+    x2012 = get_data(p1)
+    x2017 =  get_data(p2)
+    x2018 = get_data(p3)
     print len(x2012)
     print x2012
     print len(x2017)
